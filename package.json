@@ -10,7 +10,9 @@
     "test:watch": "web-test-runner --watch",
     "storybook": "start-storybook",
     "storybook:build": "build-storybook",
-    "build": "rimraf dist && rollup -c rollup.config.js",
+    "my-build": " func() { rimraf dist && API_URL=\"$1\" BASE_DIR=\"$2\" rollup -c rollup.config.js; }; func ",
+    "build-prod": " rimraf dist && API_URL=https://redshire.ru/tree BASE_DIR=/tree rollup -c rollup.config.js",
+    "build": " rimraf dist && rollup -c rollup.config.js",
     "start:build": "npm run build && web-dev-server --root-dir dist --app-index index.html --open --compatibility none",
     "start": "web-dev-server --app-index index.html --host 0.0.0.0 --node-resolve --open --watch"
   },
@@ -73,7 +75,7 @@
     ]
   },
   "name": "gramps-js",
-  "version": "0.18.0",
+  "version": "0.17.0",
   "description": "Single-page app serving as frontend to the Gramps genealogical research system.",
   "author": "David M. Straub",
   "license": "AGPL",
